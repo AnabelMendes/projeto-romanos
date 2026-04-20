@@ -13,8 +13,13 @@ int valor_romano(char c) {
 int romanos_para_decimal(char const * num_romano)
 {
     for (int i = 0; num_romano[i] != '\0'; i++) {
-        if ((num_romano[i] == 'V' || num_romano[i] == 'L' || num_romano[i] == 'D')
-            && num_romano[i] == num_romano[i + 1]) {
+        if (valor_romano(num_romano[i]) == -1) {
+            return -1;
+        }
+    }
+    for (int i = 0; num_romano[i] != '\0'; i++) {
+        if ((num_romano[i] == 'V' || num_romano[i] == 'L' || num_romano[i] == 'D') &&
+            num_romano[i] == num_romano[i + 1]) {
             return -1;
             }
     }
@@ -27,6 +32,17 @@ int romanos_para_decimal(char const * num_romano)
             }
         } else {
             repeticoes = 1;
+        }
+    }
+    for (int i = 0; num_romano[i] != '\0'; i++) {
+        int atual = valor_romano(num_romano[i]);
+        int proximo = valor_romano(num_romano[i + 1]);
+        if (proximo > atual) {
+            if (!((num_romano[i] == 'I' && (num_romano[i + 1] == 'V' || num_romano[i + 1] == 'X')) ||
+                  (num_romano[i] == 'X' && (num_romano[i + 1] == 'L' || num_romano[i + 1] == 'C')) ||
+                  (num_romano[i] == 'C' && (num_romano[i + 1] == 'D' || num_romano[i + 1] == 'M')))) {
+                return -1;
+                  }
         }
     }
     int total = 0;
