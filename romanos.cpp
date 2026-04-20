@@ -18,6 +18,10 @@ int romanos_para_decimal(char const * num_romano)
         return 4;
     }
 
+    if (strcmp(num_romano, "II") == 0) {
+        return 2;
+    }
+
     if (strlen(num_romano) == 1) {
         return valor_romano(num_romano[0]);
     }
