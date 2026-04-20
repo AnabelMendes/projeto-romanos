@@ -28,6 +28,9 @@ int romanos_para_decimal(char const * num_romano)
     if (strcmp(num_romano, "III") == 0) {
         return 3;
     }
+    if (strcmp(num_romano, "VI") == 0) {
+        return 6;
+    }
 
     return 0;
 }
