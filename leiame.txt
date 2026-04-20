@@ -30,7 +30,9 @@ O arquivo cpplint.py fornecido apresentou incompatibilidade com a versao
 atual do Python no ambiente Windows, impedindo sua execucao.
 
 - cppcheck:
-Nao estava instalado no ambiente utilizado.
+Instalado e executado com: mingw32-make cppcheck
+Os avisos encontrados sao relativos apenas a biblioteca catch.hpp,
+nao ao codigo desenvolvido.
 
 - valgrind:
 Nao e suportado nativamente no Windows.
