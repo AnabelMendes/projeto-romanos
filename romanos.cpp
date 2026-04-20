@@ -14,15 +14,17 @@ int valor_romano(char c) {
 
 int romanos_para_decimal(char const * num_romano)
 {
-    if (strcmp(num_romano, "IV") == 0) {
-        return 4;
-    }
-
     int total = 0;
 
     for (int i = 0; num_romano[i] != '\0'; i++) {
-        int valor = valor_romano(num_romano[i]);
-        total += valor;
+        int atual = valor_romano(num_romano[i]);
+        int proximo = valor_romano(num_romano[i + 1]);
+
+        if (proximo > atual) {
+            total -= atual;
+        } else {
+            total += atual;
+        }
     }
 
     return total;

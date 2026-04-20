@@ -17,4 +17,5 @@ TEST_CASE( "Numeros romanos - subtracao", "[romanos]" ) {
     REQUIRE( romanos_para_decimal("II") == 2 );
     REQUIRE( romanos_para_decimal("III") == 3 );
     REQUIRE( romanos_para_decimal("VI") == 6 );
+    REQUIRE( romanos_para_decimal("IX") == 9 );
 }
