@@ -15,6 +15,8 @@ TEST_CASE( "Numeros romanos - algarismos �nicos", "[romanos]" ) {
     REQUIRE( romanos_para_decimal("C") == 100 );
 
     REQUIRE( romanos_para_decimal("D") == 500 );
+
+    REQUIRE( romanos_para_decimal("M") == 1000 );
     
 }
 
