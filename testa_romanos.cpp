@@ -8,6 +8,8 @@ TEST_CASE( "Numeros romanos - algarismos �nicos", "[romanos]" ) {
     
     REQUIRE( romanos_para_decimal("V") == 5 );
 
+    REQUIRE( romanos_para_decimal("X") == 10 );
+
     
 }
 
