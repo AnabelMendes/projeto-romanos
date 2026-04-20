@@ -18,19 +18,12 @@ int romanos_para_decimal(char const * num_romano)
         return 4;
     }
 
-    if (strcmp(num_romano, "II") == 0) {
-        return 2;
+    int total = 0;
+
+    for (int i = 0; num_romano[i] != '\0'; i++) {
+        int valor = valor_romano(num_romano[i]);
+        total += valor;
     }
 
-    if (strlen(num_romano) == 1) {
-        return valor_romano(num_romano[0]);
-    }
-    if (strcmp(num_romano, "III") == 0) {
-        return 3;
-    }
-    if (strcmp(num_romano, "VI") == 0) {
-        return 6;
-    }
-
-    return 0;
+    return total;
 }
