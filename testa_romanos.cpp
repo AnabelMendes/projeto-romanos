@@ -27,4 +27,7 @@ TEST_CASE( "Numeros romanos - subtracao", "[romanos]" ) {
     REQUIRE( romanos_para_decimal("IL") == -1 );
     REQUIRE( romanos_para_decimal("G") == -1 );
     REQUIRE( romanos_para_decimal("IXI") == -1 );
+    REQUIRE( romanos_para_decimal("MMXXVI") == 2026 );
+    REQUIRE( romanos_para_decimal("IIX") == -1 );
+    REQUIRE( romanos_para_decimal("") == -1 );
 }

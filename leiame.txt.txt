@@ -1,0 +1,39 @@
+﻿Trabalho 1 – Conversao de Numeros Romanos
+
+Requisitos:
+- g++
+- mingw32-make
+
+Compilacao:
+mingw32-make
+
+Execucao dos testes:
+mingw32-make test
+
+Geracao de cobertura:
+mingw32-make gcov
+
+Descricao:
+O projeto implementa a conversao de numeros romanos para inteiros.
+Numeros romanos invalidos retornam -1, conforme especificado.
+
+Foram implementados testes utilizando o framework Catch.
+
+O desenvolvimento foi realizado seguindo a metodologia TDD
+(Test Driven Development), com criacao de testes antes da implementacao
+e refatoracoes ao longo do desenvolvimento.
+
+Observacoes sobre ferramentas:
+
+- cpplint:
+O arquivo cpplint.py fornecido apresentou incompatibilidade com a versao
+atual do Python no ambiente Windows, impedindo sua execucao.
+
+- cppcheck:
+Nao estava instalado no ambiente utilizado.
+
+- valgrind:
+Nao e suportado nativamente no Windows.
+
+Mesmo com essas limitacoes, o projeto foi completamente compilado,
+testado e validado, incluindo a geracao de cobertura com gcov.
