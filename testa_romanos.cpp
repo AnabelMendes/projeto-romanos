@@ -14,20 +14,23 @@ TEST_CASE( "Numeros romanos - algarismos unicos", "[romanos]" ) {
 
 TEST_CASE( "Numeros romanos - subtracao", "[romanos]" ) {
     REQUIRE( romanos_para_decimal("IV") == 4 );
+    REQUIRE( romanos_para_decimal("IX") == 9 );
+}
+
+TEST_CASE( "Numeros romanos - compostos", "[romanos]" ) {
     REQUIRE( romanos_para_decimal("II") == 2 );
     REQUIRE( romanos_para_decimal("III") == 3 );
     REQUIRE( romanos_para_decimal("VI") == 6 );
-    REQUIRE( romanos_para_decimal("IX") == 9 );
+    REQUIRE( romanos_para_decimal("MMXXVI") == 2026 );
+}
+
+TEST_CASE( "Numeros romanos - invalidos", "[romanos]" ) {
     REQUIRE( romanos_para_decimal("VV") == -1 );
     REQUIRE( romanos_para_decimal("XXXX") == -1 );
     REQUIRE( romanos_para_decimal("VX") == -1 );
     REQUIRE( romanos_para_decimal("IL") == -1 );
-    REQUIRE( romanos_para_decimal("IL") == -1 );
-    REQUIRE( romanos_para_decimal("G") == -1 );
-    REQUIRE( romanos_para_decimal("IL") == -1 );
     REQUIRE( romanos_para_decimal("G") == -1 );
     REQUIRE( romanos_para_decimal("IXI") == -1 );
-    REQUIRE( romanos_para_decimal("MMXXVI") == 2026 );
     REQUIRE( romanos_para_decimal("IIX") == -1 );
     REQUIRE( romanos_para_decimal("") == -1 );
 }
