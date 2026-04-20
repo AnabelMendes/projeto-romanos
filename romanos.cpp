@@ -18,6 +18,17 @@ int romanos_para_decimal(char const * num_romano)
             return -1;
             }
     }
+    int repeticoes = 1;
+    for (int i = 1; num_romano[i] != '\0'; i++) {
+        if (num_romano[i] == num_romano[i - 1]) {
+            repeticoes++;
+            if (repeticoes > 3) {
+                return -1;
+            }
+        } else {
+            repeticoes = 1;
+        }
+    }
     int total = 0;
     for (int i = 0; num_romano[i] != '\0'; i++) {
         int atual = valor_romano(num_romano[i]);
