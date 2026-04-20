@@ -1,125 +1,1 @@
-#include "romanos.hpp"
-#include <cstring>
-#include <string>
-int valor_romano(char c) {
-    if (c == 'I') return 1;
-    if (c == 'V') return 5;
-    if (c == 'X') return 10;
-    if (c == 'L') return 50;
-    if (c == 'C') return 100;
-    if (c == 'D') return 500;
-    if (c == 'M') return 1000;
-    return -1;
-}
-std::string decimal_para_romano(int numero) {
-    std::string resultado;
-    while (numero >= 1000) {
-        resultado += "M";
-        numero -= 1000;
-    }
-    if (numero >= 900) {
-        resultado += "CM";
-        numero -= 900;
-    }
-    if (numero >= 500) {
-        resultado += "D";
-        numero -= 500;
-    }
-    if (numero >= 400) {
-        resultado += "CD";
-        numero -= 400;
-    }
-    while (numero >= 100) {
-        resultado += "C";
-        numero -= 100;
-    }
-    if (numero >= 90) {
-        resultado += "XC";
-        numero -= 90;
-    }
-    if (numero >= 50) {
-        resultado += "L";
-        numero -= 50;
-    }
-    if (numero >= 40) {
-        resultado += "XL";
-        numero -= 40;
-    }
-    while (numero >= 10) {
-        resultado += "X";
-        numero -= 10;
-    }
-    if (numero >= 9) {
-        resultado += "IX";
-        numero -= 9;
-    }
-    if (numero >= 5) {
-        resultado += "V";
-        numero -= 5;
-    }
-    if (numero >= 4) {
-        resultado += "IV";
-        numero -= 4;
-    }
-    while (numero >= 1) {
-        resultado += "I";
-        numero -= 1;
-    }
-    return resultado;
-}
-int romanos_para_decimal(char const * num_romano)
-{
-    if (num_romano == nullptr || num_romano[0] == '\0') {
-        return -1;
-    }
-    for (int i = 0; num_romano[i] != '\0'; i++) {
-        if (valor_romano(num_romano[i]) == -1) {
-            return -1;
-        }
-    }
-    for (int i = 0; num_romano[i] != '\0'; i++) {
-        if ((num_romano[i] == 'V' || num_romano[i] == 'L' || num_romano[i] == 'D') &&
-            num_romano[i] == num_romano[i + 1]) {
-            return -1;
-        }
-    }
-    int repeticoes = 1;
-    for (int i = 1; num_romano[i] != '\0'; i++) {
-        if (num_romano[i] == num_romano[i - 1]) {
-            repeticoes++;
-            if (repeticoes > 3) {
-                return -1;
-            }
-        } else {
-            repeticoes = 1;
-        }
-    }
-    for (int i = 0; num_romano[i] != '\0'; i++) {
-        int atual = valor_romano(num_romano[i]);
-        int proximo = valor_romano(num_romano[i + 1]);
-        if (proximo > atual) {
-            if (!((num_romano[i] == 'I' && (num_romano[i + 1] == 'V' || num_romano[i + 1] == 'X')) ||
-                  (num_romano[i] == 'X' && (num_romano[i + 1] == 'L' || num_romano[i + 1] == 'C')) ||
-                  (num_romano[i] == 'C' && (num_romano[i + 1] == 'D' || num_romano[i + 1] == 'M')))) {
-                return -1;
-            }
-        }
-    }
-    int total = 0;
-    for (int i = 0; num_romano[i] != '\0'; i++) {
-        int atual = valor_romano(num_romano[i]);
-        int proximo = valor_romano(num_romano[i + 1]);
-        if (proximo > atual) {
-            total -= atual;
-        } else {
-            total += atual;
-        }
-    }
-    if (total <= 0 || total > 3000) {
-        return -1;
-    }
-    if (decimal_para_romano(total) != num_romano) {
-        return -1;
-    }
-    return total;
-}
+#include "romanos.hpp"#include <cstring>#include <string>int valor_romano(char c) {    if (c == 'I') {        return 1;    }    if (c == 'V') {        return 5;    }    if (c == 'X') {        return 10;    }    if (c == 'L') {        return 50;    }    if (c == 'C') {        return 100;    }    if (c == 'D') {        return 500;    }    if (c == 'M') {        return 1000;    }    return -1;}std::string decimal_para_romano(int numero) {    std::string resultado;    while (numero >= 1000) {        resultado += "M";        numero -= 1000;    }    if (numero >= 900) {        resultado += "CM";        numero -= 900;    }    if (numero >= 500) {        resultado += "D";        numero -= 500;    }    if (numero >= 400) {        resultado += "CD";        numero -= 400;    }    while (numero >= 100) {        resultado += "C";        numero -= 100;    }    if (numero >= 90) {        resultado += "XC";        numero -= 90;    }    if (numero >= 50) {        resultado += "L";        numero -= 50;    }    if (numero >= 40) {        resultado += "XL";        numero -= 40;    }    while (numero >= 10) {        resultado += "X";        numero -= 10;    }    if (numero >= 9) {        resultado += "IX";        numero -= 9;    }    if (numero >= 5) {        resultado += "V";        numero -= 5;    }    if (numero >= 4) {        resultado += "IV";        numero -= 4;    }    while (numero >= 1) {        resultado += "I";        numero -= 1;    }    return resultado;}int romanos_para_decimal(char const * num_romano) {    if (num_romano == nullptr || num_romano[0] == '\0') {        return -1;    }    for (int i = 0; num_romano[i] != '\0'; i++) {        if (valor_romano(num_romano[i]) == -1) {            return -1;        }    }    for (int i = 0; num_romano[i] != '\0'; i++) {        if ((num_romano[i] == 'V' || num_romano[i] == 'L' || num_romano[i] == 'D') &&            num_romano[i] == num_romano[i + 1]) {            return -1;        }    }    int repeticoes = 1;    for (int i = 1; num_romano[i] != '\0'; i++) {        if (num_romano[i] == num_romano[i - 1]) {            repeticoes++;            if (repeticoes > 3) {                return -1;            }        } else {            repeticoes = 1;        }    }    for (int i = 0; num_romano[i] != '\0'; i++) {        int atual = valor_romano(num_romano[i]);        int proximo = valor_romano(num_romano[i + 1]);        if (proximo > atual) {            if (!((num_romano[i] == 'I' && (num_romano[i + 1] == 'V' || num_romano[i + 1] == 'X')) ||                  (num_romano[i] == 'X' && (num_romano[i + 1] == 'L' || num_romano[i + 1] == 'C')) ||                  (num_romano[i] == 'C' && (num_romano[i + 1] == 'D' || num_romano[i + 1] == 'M')))) {                return -1;            }        }    }    int total = 0;    for (int i = 0; num_romano[i] != '\0'; i++) {        int atual = valor_romano(num_romano[i]);        int proximo = valor_romano(num_romano[i + 1]);        if (proximo > atual) {            total -= atual;        } else {            total += atual;        }    }    if (total <= 0 || total > 3000) {        return -1;    }    if (decimal_para_romano(total) != num_romano) {        return -1;    }    return total;}
