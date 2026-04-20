@@ -9,5 +9,8 @@ int romanos_para_decimal(char const * num_romano)
     if (strcmp(num_romano, "V") == 0) {
         return 5;
     }
+    if (strcmp(num_romano, "X") == 0) {
+        return 10;
+    }
     return 0;
 }
